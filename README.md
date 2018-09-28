@@ -4,6 +4,23 @@ This repository is aimed to reproduce a bug in EF Core.
 
 The problem is that EF Core generates a query that has an invalid `ORDER BY` clause. When ordering by an `int` column the query is generated correctly. But when ordering by a `datetimeoffset` column, the `ORDER BY` clause includes an `AS {COLUMN NAME}` section.
 
+The LINQ Query in question (found in `QueryHandler.cs`):
+``` c#
+var result = await _context.TelemCalls.GroupBy(c => new
+{
+    JobId = c.CallStack.JobSupplier.Job.Id,
+    StartDate = c.CallStack.JobSupplier.Created
+})
+.Select(g => new QueryResultModel()
+{
+    JobId = g.Key.JobId,
+    StartDate = g.Key.StartDate,
+    CallsMade = g.Count()
+})
+.OrderBy(r => r.StartDate)
+.ToListAsync();
+```
+
 Example incorrect query:
 ``` sql
 SELECT [c.CallStack.JobSupplier.Job].[Id] AS [JobId], [c.CallStack.JobSupplier].[Created] AS [StartDate], COUNT(*) AS [CallsMade]

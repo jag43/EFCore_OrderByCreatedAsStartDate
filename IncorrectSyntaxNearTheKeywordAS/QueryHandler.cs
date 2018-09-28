@@ -32,9 +32,8 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
         private IQueryable<QueryResultModel> CallsByOperatorQuery()
         {
-            IQueryable<TelemCall> queryStart = _context.TelemCalls;
 
-            var query = queryStart.GroupBy(c => new
+            return _context.TelemCalls.GroupBy(c => new
             {
                 JobId = c.CallStack.JobSupplier.Job.Id,
                 StartDate = c.CallStack.JobSupplier.Created
@@ -45,8 +44,6 @@ namespace IncorrectSyntaxNearTheKeywordAS
                 StartDate = g.Key.StartDate,
                 CallsMade = g.Count()
             });
-
-            return query;
         }
     }
 }
