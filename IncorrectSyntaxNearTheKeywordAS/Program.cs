@@ -19,7 +19,15 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
             await new TestDataInserter(context).InsertTestDataAsync();
 
-            Console.WriteLine("Hello World!");
+            var queryHandler = new QueryHandler(context);
+
+            var result1 = await queryHandler.ExecuteQueryOrderByCountAsync();
+            Console.WriteLine($"result1: {result1.Count} records.");
+
+            var result2 = await queryHandler.ExecuteQueryOrderByCreatedAsync();
+            Console.WriteLine($"result2: {result2.Count} records.");
+
+            Console.ReadLine();
         }
 
         private static DataContext CreateContext(string connectionString)
@@ -30,7 +38,5 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
             return new DataContext(optionsBuilder.Options);
         }
-
-        
     }
 }

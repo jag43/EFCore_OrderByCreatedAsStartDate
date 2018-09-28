@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using IncorrectSyntaxNearTheKeywordAS.Models;
+using IncorrectSyntaxNearTheKeywordAS.Models.Maps;
 using System;
+using System.Linq;
 
 namespace IncorrectSyntaxNearTheKeywordAS
 {
@@ -13,39 +15,33 @@ namespace IncorrectSyntaxNearTheKeywordAS
             Database.SetCommandTimeout(new TimeSpan(0, 1, 30));
         }
         #endregion CTORs
-        public DbSet<Call> Calls { get; set; }
-        public DbSet<Job> Jobs { get; set; }
-        public DbSet<Operator> Operators { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Organisation> Organisations { get; set; }
         public DbSet<Team> Teams { get; set; }
-        
-            
+        public DbSet<TeamApplicationUser> TeamApplicationUsers { get; set; }
+        public DbSet<TelemAgency> TelemAgencies { get; set; }
+        public DbSet<TelemCall> TelemCalls { get; set; }
+        public DbSet<TelemCallStack> TelemCallStacks { get; set; }
+        public DbSet<TelemJob> TelemJobs { get; set; }
+        public DbSet<TelemJobSupplier> TelemJobSuppliers { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Call>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
+            modelBuilder.Entity<ApplicationUser>().Map();
+            modelBuilder.Entity<Organisation>().Map();
+            modelBuilder.Entity<Team>().Map();
+            modelBuilder.Entity<TeamApplicationUser>().Map();
+            modelBuilder.Entity<TelemAgency>().Map();
+            modelBuilder.Entity<TelemCall>().Map();
+            modelBuilder.Entity<TelemCallStack>().Map();
+            modelBuilder.Entity<TelemJob>().Map();
+            modelBuilder.Entity<TelemJobSupplier>().Map();
 
-            modelBuilder.Entity<Job>(entity =>
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Created).ValueGeneratedOnAdd().HasDefaultValueSql("SYSDATETIMEOFFSET()");
-            });
-
-            modelBuilder.Entity<JobTeam>(entity =>
-            {
-                entity.HasKey(e => new { e.JobId, e.TeamId });
-            });
-
-            modelBuilder.Entity<Operator>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
-
-            modelBuilder.Entity<Team>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
         }
     }
 }

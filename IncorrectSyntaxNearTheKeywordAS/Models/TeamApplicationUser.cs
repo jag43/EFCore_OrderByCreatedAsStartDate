@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace IncorrectSyntaxNearTheKeywordAS.Models
 {
-    public class JobTeam
+    public class TeamApplicationUser
     {
-        public int JobId { get; set; }
-        public int TeamId { get; set; }
+        public Guid TeamId { get; set; }
+        public Guid UserId { get; set; }
 
-        public Job Job { get; set; }
+        // Navigation
         public Team Team { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 }
