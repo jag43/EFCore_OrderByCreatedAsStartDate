@@ -20,22 +20,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .HasColumnName("Id");
 
             // Field Mappings
-            cfg.Property(org => org.Description)
-                .HasColumnName("Description");
-
-            cfg.Property(org => org.Name)
-                .IsRequired()
-                .HasMaxLength(128)
-                .HasColumnName("Name");
-
-            cfg.Property(org => org.WebsiteUrl)
-                .HasMaxLength(1024)
-                .HasColumnName("WebsiteUrl");
-
-            cfg.Property(org => org.RowVersion)
-                .IsRequired()
-                .IsRowVersion()
-                .HasColumnName("RowVersion");
 
             return cfg;
         }

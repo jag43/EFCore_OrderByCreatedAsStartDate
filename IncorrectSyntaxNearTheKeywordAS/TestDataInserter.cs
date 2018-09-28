@@ -20,10 +20,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
         {
             var org = new Organisation
             {
-                Id = "ORG",
-                Name = "Organisation",
-                Description = "Test Organisation",
-                WebsiteUrl = "www.example.com"
+                Id = "ORG"
             };
             _context.Organisations.Add(org);
 
