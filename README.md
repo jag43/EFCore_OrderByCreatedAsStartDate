@@ -1,6 +1,6 @@
 ﻿# EFCore_OrderByCreatedAsStartDate
 
-This repository is aimed to reproduce a bug in EF Core.
+This aim of this repository is to reproduce a bug in EF Core.
 
 The problem is that EF Core generates a query that has an invalid `ORDER BY` clause. When ordering by an `int` column the query is generated correctly. But when ordering by a `datetimeoffset` column, the `ORDER BY` clause includes an `AS {COLUMN NAME}` section.
 
