@@ -1,5 +1,7 @@
 ﻿using IncorrectSyntaxNearTheKeywordAS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -13,60 +15,26 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
         static async Task Main(string[] args)
         {
-            Log("Creating context...");
-            var context = CreateContext(connectionString);
-            Log("Context created");
-            Log();
-            Log("Starting EnsureDeleted call...");
-            context.Database.EnsureDeleted();
-            Log("EnsureDeleted call done.");
-            Log();
-            Log("Starting EnsureCreated call...");
-            context.Database.EnsureCreated();
-            Log("EnsureCreated call done.");
+            IServiceProvider services = GetServiceProvider();
 
-            Log("Inserting test data...");
-            await new TestDataInserter(context).InsertTestDataAsync();
-            Log("Test data inserted.");
-            Log();
+            var app = new Application(
+                services.GetRequiredService<DataContext>());
 
-            var queryHandler = new QueryHandler(context);
-
-            Log("Starting query1 OrderByCount");
-            var result1 = await queryHandler.ExecuteQueryOrderByCountAsync();
-            Console.WriteLine($"Query1 done. result: {result1.Count} records.");
-
-            Log("Starting query2 OrderByCreated");
-            try
-            {
-                var result2 = await queryHandler.ExecuteQueryOrderByCreatedAsync();
-                Console.WriteLine($"result2: {result2.Count} records.");
-            }
-            catch(SqlException ex)
-            {
-                Log($"Error: {ex.Message}");
-                Log(ex.StackTrace);
-                Log();
-            }
-
-            Console.ReadLine();
+            await app.StartAsync();
         }
 
-        private static DataContext CreateContext(string connectionString)
+        private static IServiceProvider GetServiceProvider()
         {
-            
-            var optionsBuilder = new DbContextOptionsBuilder<DataContext>()
-                       .UseSqlServer(connectionString);
+            var services = new ServiceCollection();
 
-            return new DataContext(optionsBuilder.Options);
-        }
+            services.AddLogging(configure => configure.AddDebug());
 
-        private static void Log(string s = null)
-        {
-            if (s != null)
-                Console.WriteLine(s);
-            else
-                Console.WriteLine();
+            services.AddDbContext<DataContext>(optionsBuilder => 
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+            });
+
+            return services.BuildServiceProvider();
         }
     }
 }
