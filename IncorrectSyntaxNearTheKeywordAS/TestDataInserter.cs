@@ -18,13 +18,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
         public async Task InsertTestDataAsync()
         {
-            var job = new TelemJob
-            {
-                Reference = "Test Job",
-                Status = Models.Enums.TelemJobStatus.InProgress,
-                RecordsRequired = 100,
-                ScheduledEndDate = DateTimeOffset.Now.AddDays(14)
-            };
+            var job = new TelemJob();
             _context.TelemJobs.Add(job);
 
             var jobSupplier = new TelemJobSupplier
