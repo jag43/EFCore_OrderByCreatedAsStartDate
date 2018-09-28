@@ -15,17 +15,12 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models
         public int RecordsRequired { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? ScheduledEndDate { get; set; }
-        public Guid CreatedById { get; set; }
         public DateTimeOffset? Closed { get; set; }
-        public Guid? ClosedById { get; set; }
         public string PrivateNotes { get; set; }
         public string PublicNotes { get; set; }
         public byte[] Timestamp { get; set; }
 
         // Navigation
-
-        public ApplicationUser CreatedBy { get; set; }
-        public ApplicationUser ClosedBy { get; set; }
         public ICollection<TelemJobSupplier> Suppliers { get; set; }
     }
 }

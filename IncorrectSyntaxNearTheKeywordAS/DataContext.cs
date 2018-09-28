@@ -15,11 +15,6 @@ namespace IncorrectSyntaxNearTheKeywordAS
             Database.SetCommandTimeout(new TimeSpan(0, 1, 30));
         }
         #endregion CTORs
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Organisation> Organisations { get; set; }
-        public DbSet<Team> Teams { get; set; }
-        public DbSet<TeamApplicationUser> TeamApplicationUsers { get; set; }
-        public DbSet<TelemAgency> TelemAgencies { get; set; }
         public DbSet<TelemCall> TelemCalls { get; set; }
         public DbSet<TelemCallStack> TelemCallStacks { get; set; }
         public DbSet<TelemJob> TelemJobs { get; set; }
@@ -28,11 +23,6 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ApplicationUser>().Map();
-            modelBuilder.Entity<Organisation>().Map();
-            modelBuilder.Entity<Team>().Map();
-            modelBuilder.Entity<TeamApplicationUser>().Map();
-            modelBuilder.Entity<TelemAgency>().Map();
             modelBuilder.Entity<TelemCall>().Map();
             modelBuilder.Entity<TelemCallStack>().Map();
             modelBuilder.Entity<TelemJob>().Map();

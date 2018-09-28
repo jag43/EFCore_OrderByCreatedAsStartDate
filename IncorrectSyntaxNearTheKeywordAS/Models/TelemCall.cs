@@ -11,7 +11,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models
     {
         public int Id { get; set; }
         public int CallStackId { get; set; }
-        public Guid OperatorId { get; set; }
         public DateTimeOffset CallStart { get; set; }
         public DateTimeOffset? CallEnd { get; set; }
         public int? CallDurationSeconds { get; set; }
@@ -26,6 +25,5 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models
 
         // Navigation
         public TelemCallStack CallStack { get; set; }
-        public ApplicationUser Operator { get; set; }
     }
 }

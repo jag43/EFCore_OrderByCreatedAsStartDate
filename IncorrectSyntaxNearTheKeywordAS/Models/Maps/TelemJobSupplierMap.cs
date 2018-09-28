@@ -24,10 +24,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .IsRequired()
                 .HasColumnName("JobId");
 
-            cfg.Property(supplier => supplier.AgencyId)
-                .IsRequired()
-                .HasColumnName("SupplierId");
-
             cfg.Property(supplier => supplier.RecordsRequired)
                 .IsRequired()
                 .HasColumnName("RecordsRequired");
@@ -35,10 +31,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
             cfg.Property(supplier => supplier.JobFrozen)
                 .IsRequired()
                 .HasColumnName("JobFrozen");
-
-            cfg.Property(supplier => supplier.CreatedById)
-                .IsRequired()
-                .HasColumnName("CreatedById");
 
             cfg.Property(supplier => supplier.Notes)
                 .HasColumnName("Notes");

@@ -24,10 +24,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .IsRequired()
                 .HasColumnName("CallStackId");
 
-            cfg.Property(call => call.OperatorId)
-                .IsRequired()
-                .HasColumnName("OperatorId");
-            
             cfg.Property(call => call.AcceptDisclaimer)
                 .IsRequired()
                 .HasColumnName("AcceptDisclaimer");

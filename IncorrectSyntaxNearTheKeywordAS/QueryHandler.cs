@@ -37,28 +37,12 @@ namespace IncorrectSyntaxNearTheKeywordAS
             var query = queryStart.GroupBy(c => new
             {
                 JobId = c.CallStack.JobSupplier.Job.Id,
-                JobReference = c.CallStack.JobSupplier.Job.Reference,
-                JobStatus = c.CallStack.JobSupplier.Job.Status,
-                TeamId = c.CallStack.TeamId,
-                OperatorId = c.OperatorId,
-                OperatorUserName = c.Operator.UserName,
-                AgencyId = c.CallStack.JobSupplier.AgencyId,
-                StartDate = c.CallStack.JobSupplier.Created,
-                EndDate = c.CallStack.JobSupplier.Job.ScheduledEndDate,
-                RecordsRequired = c.CallStack.JobSupplier.RecordsRequired
+                StartDate = c.CallStack.JobSupplier.Created
             })
             .Select(g => new QueryResultModel()
             {
                 JobId = g.Key.JobId,
-                JobReference = g.Key.JobReference,
-                JobStatus = g.Key.JobStatus,
-                TeamId = g.Key.TeamId,
-                OperatorId = g.Key.OperatorId,
-                OperatorUserName = g.Key.OperatorUserName,
-                AgencyId = g.Key.AgencyId,
                 StartDate = g.Key.StartDate,
-                EndDate = g.Key.EndDate,
-                RecordsRequired = g.Key.RecordsRequired,
                 CallsMade = g.Count()
             })
             ;

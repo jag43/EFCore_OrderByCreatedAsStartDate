@@ -20,13 +20,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .HasColumnName("Id");
             
             // Field Mappings
-            cfg.Property(job => job.ClosedById)
-                .HasColumnName("ClosedById");
-
-            cfg.Property(job => job.CreatedById)
-                .IsRequired()
-                .HasColumnName("CreatedById");
-
             cfg.Property(job => job.Reference)
                 .IsRequired()
                 .HasMaxLength(100)
