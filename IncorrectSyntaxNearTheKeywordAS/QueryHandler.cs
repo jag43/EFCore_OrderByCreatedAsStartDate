@@ -21,7 +21,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
         public async Task<ICollection<QueryResultModel>> ExecuteQueryOrderByCountAsync()
         {
             // works
-            return await CallsByOperatorQuery().OrderBy(r => r.CallsMade).ToListAsync();
+            return await CallsByOperatorQuery().OrderBy(r => r.JobId).ToListAsync();
         }
 
         public async Task<ICollection<QueryResultModel>> ExecuteQueryOrderByCreatedAsync()
@@ -44,8 +44,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
                 JobId = g.Key.JobId,
                 StartDate = g.Key.StartDate,
                 CallsMade = g.Count()
-            })
-            ;
+            });
 
             return query;
         }

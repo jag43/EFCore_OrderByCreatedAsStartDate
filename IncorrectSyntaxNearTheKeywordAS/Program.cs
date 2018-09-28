@@ -10,8 +10,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
 {
     class Program
     {
-        const string connectionString =
-                      @"Server=(localdb)\MSSQLLocalDB;Database=Junk";
+        const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=Junk";
 
         static async Task Main(string[] args)
         {
