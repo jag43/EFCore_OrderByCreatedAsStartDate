@@ -30,22 +30,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
             var admin = new ApplicationUser
             {
                 UserName = "james.gibson@example.com",
-                Email = "james.gibson@example.com",
-                FirstName = "James",
-                LastName = "Gibson",
                 OrganisationId = org.Id,
-                NormalizedUserName = "james.gibson@example.com",
-                NormalizedEmail = "james.gibson@example.com",
-                EmailConfirmed = true,
-                Password = "",
-                PhoneNumber = null,
-                PhoneNumberConfirmed = false,
-                TwoFactorEnabled = false,
-                LockoutEnabled = true,
-                AccessFailedCount = 0,
-                ConcurrencyStamp = "cc0781-a785-4101-bf75-9a4618f96d90",
-                LockoutEnd = null,
-                Disabled = false
             };
             _context.ApplicationUsers.Add(admin);
 
