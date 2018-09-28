@@ -40,10 +40,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
             var team = new Team()
             {
-                Manager = admin,
-                Organisation = org,
-                Reference = "Test Team",
-                Notes = null
+                Organisation = org
             };
             _context.Teams.Add(team);
 

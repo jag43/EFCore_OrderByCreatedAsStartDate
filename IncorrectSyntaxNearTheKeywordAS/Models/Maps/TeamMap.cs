@@ -17,27 +17,10 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .IsRequired()
                 .HasColumnName("Id");
 
-            // Field Mappings
-            cfg.Property(team => team.ManagerId)
-                .HasColumnName("ManagerId");
-
             cfg.Property(team => team.OrganisationId)
                 .IsRequired()
                 .HasMaxLength(10)
                 .HasColumnName("OrganisationId");
-
-            cfg.Property(team => team.Reference)
-                .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("Reference");
-
-            cfg.Property(team => team.Notes)
-                .HasColumnName("Notes");
-
-            cfg.Property(team => team.Timestamp)
-                .IsRequired()
-                .IsRowVersion()
-                .HasColumnName("Timestamp");
 
             return cfg;
         }

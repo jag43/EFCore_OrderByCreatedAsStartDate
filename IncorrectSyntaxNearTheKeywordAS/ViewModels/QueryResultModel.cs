@@ -16,7 +16,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.ViewModels
         public TelemJobStatus JobStatus { get; set; }
         public int AgencyId { get; set; }
         public Guid TeamId { get; set; }
-        public string TeamReference { get; set; }
         public DateTimeOffset? StartDate { get; set; }
         public DateTimeOffset? EndDate { get; set; }
         public int RecordsRequired { get; set; }
