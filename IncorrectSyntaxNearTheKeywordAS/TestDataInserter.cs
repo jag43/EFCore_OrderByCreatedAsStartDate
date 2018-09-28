@@ -44,13 +44,7 @@ namespace IncorrectSyntaxNearTheKeywordAS
             {
                 new TelemCall
                 {
-                    CallStack = stack,
-                    Status = Models.Enums.TelemCallStatus.Completed,
-                    CallStart = DateTimeOffset.Now,
-                    CallEnd = DateTimeOffset.Now.AddMinutes(20),
-                    ScriptDelivered = true,
-                    AcceptDisclaimer = true,
-                    CallAttempts = 1
+                    CallStack = stack
                 }
             };
             await _context.TelemCalls.AddRangeAsync(calls);
