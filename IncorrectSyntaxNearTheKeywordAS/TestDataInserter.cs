@@ -33,7 +33,6 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
             var agency = new TelemAgency
             {
-                Name = "Test Agency",
                 Organisation = org
             };
             _context.TelemAgencies.Add(agency);

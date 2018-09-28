@@ -25,21 +25,6 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .HasMaxLength(10)
                 .HasColumnName("OrganisationId");
 
-            cfg.Property(tms => tms.Archived)
-                .IsRequired()
-                .HasColumnName("Archived");
-
-            cfg.Property(tms => tms.Name)
-                .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnName("Name");
-
-            cfg.Property(tms => tms.Timestamp)
-                .IsRequired()
-                .ValueGeneratedOnAdd()
-                .IsRowVersion()
-                .HasColumnName("Timestamp");
-
             return cfg;
         }
     }
