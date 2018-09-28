@@ -24,26 +24,9 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models.Maps
                 .IsRequired()
                 .HasColumnName("JobId");
 
-            cfg.Property(supplier => supplier.RecordsRequired)
-                .IsRequired()
-                .HasColumnName("RecordsRequired");
-
-            cfg.Property(supplier => supplier.JobFrozen)
-                .IsRequired()
-                .HasColumnName("JobFrozen");
-
-            cfg.Property(supplier => supplier.Notes)
-                .HasColumnName("Notes");
-
             cfg.Property(supplier => supplier.Created)
                 .IsRequired()
                 .HasColumnName("Created");
-
-            cfg.Property(supplier => supplier.Timestamp)
-                .IsRequired()
-                .ValueGeneratedOnAdd()
-                .IsRowVersion()
-                .HasColumnName("Timestamp");
 
             return cfg;
         }

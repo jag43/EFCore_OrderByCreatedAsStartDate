@@ -23,7 +23,6 @@ namespace IncorrectSyntaxNearTheKeywordAS
 
             var jobSupplier = new TelemJobSupplier
             {
-                RecordsRequired = 100,
                 Job = job
             };
             _context.TelemJobSuppliers.Add(jobSupplier);

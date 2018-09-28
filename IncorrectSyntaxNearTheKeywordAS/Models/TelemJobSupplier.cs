@@ -10,11 +10,7 @@ namespace IncorrectSyntaxNearTheKeywordAS.Models
     {
         public int Id { get; set; }
         public int JobId { get; set; }
-        public int RecordsRequired { get; set; }
-        public bool JobFrozen { get; set; }
         public DateTimeOffset Created { get; set; }
-        public string Notes { get; set; }
-        public byte[] Timestamp { get; set; }
 
         // Navigation
         public TelemJob Job { get; set; }
